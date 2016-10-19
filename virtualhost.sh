@@ -6,7 +6,6 @@ TEXTDOMAIN=virtualhost
 action=$1
 domain=$2
 rootDir=$3
-owner=$(who am i | awk '{print $1}')
 email='webmaster@localhost'
 sitesEnable='/etc/apache2/sites-enabled/'
 sitesAvailable='/etc/apache2/sites-available/'
@@ -100,12 +99,6 @@ if [ "$action" == 'create' ]
 			exit;
 		else
 			echo -e $"Host added to /etc/hosts file \n"
-		fi
-
-		if [ "$owner" == "" ]; then
-			chown -R $(whoami):$(whoami) $rootDir
-		else
-			chown -R $owner:$owner $rootDir
 		fi
 
 		### enable website
